@@ -1,10 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //connect our app to mlab using mongoose, also building our schema
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-require('dotenv').config({ path: 'variables.env' });
+require('dotenv').config({ path: 'variables.env' }); //this will allow us to create different variables for those entries that we provided in our .env file...
 const Recipe = require('./models/Recipe');
 const User = require('./models/User');
 
