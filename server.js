@@ -57,19 +57,19 @@ const app = express();
 //   next();
 // });
 
-// Create GraphiQL application
-// app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
+// Create GraphiQL application --> basically type in browser --> "http://localhost:4444/graphiql"
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 // Connect schemas with GraphQL
 app.use(
   '/graphql',
-  bodyParser.json(),
+  //bodyParser.json(),
   graphqlExpress(({ currentUser }) => ({
     schema,
     context: {
       Recipe,
-      User,
-      currentUser
+      User
+      //currentUser
     }
   }))
 );
