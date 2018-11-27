@@ -1,11 +1,15 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema; //we use a property of mongoose...
 
+//create a schema variable
 const RecipeSchema = new Schema({
+  //we want every recipe to have a name...required set to true
+  //that means it is compulsory..
   name: {
     type: String,
     required: true
   },
+  //
   imageUrl: {
     type: String,
     required: true
@@ -18,25 +22,30 @@ const RecipeSchema = new Schema({
     type: String,
     required: true
   },
+  //instruction for recipes
   instructions: {
     type: String,
     required: true
   },
+  //Date when the recipe was created
   createdDate: {
     type: Date,
     default: Date.now
   },
+  //no. of likes...
   likes: {
     type: Number,
     default: 0
   },
+  //We want to know which user created the recipe...
   username: {
     type: String
   }
 });
 
 RecipeSchema.index({
-  "$**": "text"
+  '$**': 'text'
 });
 
-module.exports = mongoose.model("Recipe", RecipeSchema);
+//We want to export the schema...
+module.exports = mongoose.model('Recipe', RecipeSchema);
