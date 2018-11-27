@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose'); //connect our app to mlab using mongoose, also building our schema
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); //need for json request and responses
 const path = require('path');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
@@ -10,18 +10,23 @@ require('dotenv').config({ path: 'variables.env' }); //this will allow us to cre
 const Recipe = require('./models/Recipe');
 const User = require('./models/User');
 
-// Bring in GraphQL-Express middleware
+//************************ */
+//*********************** */
+// Bring in GraphQL-Express middleware --> these two tools will allow us to essentially connect to GraphQL with Express...
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
-
+//Bring in schema and resolvers...
 const { typeDefs } = require('./schema');
 const { resolvers } = require('./resolvers');
-
-// Create schema
+//************************ */
+//************************ */
+// Create GraphQL schema
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers
 });
+//************************ */
+//************************ */
 
 // Connects to database
 mongoose
