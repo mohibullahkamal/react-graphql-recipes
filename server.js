@@ -5,6 +5,8 @@ const path = require('path');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' }); //this will allow us to create different variables for those entries that we provided in our .env file...
+
+//import both recipe and user JS files...
 const Recipe = require('./models/Recipe');
 const User = require('./models/User');
 
