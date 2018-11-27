@@ -29,23 +29,23 @@ type User {
 
 type Query {
   getAllRecipes: [Recipe]
-  getRecipe(_id: ID!): Recipe
-  searchRecipes(searchTerm: String): [Recipe]
-
-  getCurrentUser: User
-  getUserRecipes(username: String!): [Recipe]
-}
-
-type Token {
-  token: String!
 }
 
 type Mutation {
   addRecipe(name: String!, imageUrl: String!, description: String!, category: String!, instructions: String!, username: String): Recipe
-  
 }
 
 `;
+
+//   getRecipe(_id: ID!): Recipe
+//   searchRecipes(searchTerm: String): [Recipe]
+
+//   getCurrentUser: User
+//   getUserRecipes(username: String!): [Recipe]
+
+// type Token {
+//   token: String!
+// }
 
 // deleteUserRecipe(_id: ID): Recipe
 // likeRecipe(_id: ID!, username: String!): Recipe

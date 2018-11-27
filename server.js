@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose'); //connect our app to mlab using mongoose, also building our schema
 const bodyParser = require('body-parser'); //need for json request and responses
-const path = require('path');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
+// const path = require('path');
+// const cors = require('cors');
+// const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' }); //this will allow us to create different variables for those entries that we provided in our .env file...
 
 //import both recipe and user JS files...
@@ -41,21 +41,21 @@ const app = express();
 //   origin: "http://localhost:3000",
 //   credentials: true
 // };
-app.use(cors('*'));
+// app.use(cors('*'));
 
 // Set up JWT authentication middleware
-app.use(async (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (token !== 'null') {
-    try {
-      const currentUser = await jwt.verify(token, process.env.SECRET);
-      req.currentUser = currentUser;
-    } catch (err) {
-      console.error(err);
-    }
-  }
-  next();
-});
+// app.use(async (req, res, next) => {
+//   const token = req.headers['authorization'];
+//   if (token !== 'null') {
+//     try {
+//       const currentUser = await jwt.verify(token, process.env.SECRET);
+//       req.currentUser = currentUser;
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   }
+//   next();
+// });
 
 // Create GraphiQL application
 // app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
@@ -74,13 +74,13 @@ app.use(
   }))
 );
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/build'));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//   });
+// }
 
 const PORT = process.env.PORT || 4444;
 
