@@ -31,7 +31,6 @@ exports.resolvers = {
       return newRecipe;
     },
 
-
     signupUser: async (root, { username, email, password }, { User }) => {
       const user = await User.findOne({ username });
       if (user) {
@@ -42,9 +41,8 @@ exports.resolvers = {
         email,
         password
       }).save();
-      return { token: createToken(newUser, process.env.SECRET, "1hr") };
-    }
-
+      return { token: createToken(newUser, process.env.SECRET, '1hr') };
+    },
 
     signinUser: async (root, { username, password }, { User }) => {
       const user = await User.findOne({ username });
@@ -88,11 +86,6 @@ exports.resolvers = {
 //   }
 //   return { token: createToken(user, process.env.SECRET, '1hr') };
 // },
-
-
-
-
-
 
 //   const allRecipes = await Recipe.find().sort({ createdDate: 'desc' });
 //   return allRecipes;
