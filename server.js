@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose'); //connect our app to mlab using mongoose, also building our schema
 const bodyParser = require('body-parser'); //need for json request and responses
 // const path = require('path');
-// const cors = require('cors');
+const cors = require('cors'); //cors is an express package that allows us to make cross domain requests... from React App to our Backend...
 // const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' }); //this will allow us to create different variables for those entries that we provided in our .env file...
 
@@ -36,6 +36,12 @@ mongoose
 
 // Initializes application
 const app = express();
+
+const corsOptions = {
+  origin: 'http://localhost:3000/',
+  credentials: true
+};
+app.use(cors(corsOptions));
 
 // const corsOptions = {
 //   origin: "http://localhost:3000",
