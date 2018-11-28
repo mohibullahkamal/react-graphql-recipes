@@ -43,10 +43,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// const corsOptions = {
-//   origin: "http://localhost:3000",
-//   credentials: true
-// };
 // app.use(cors('*'));
 
 // Set up JWT authentication middleware
