@@ -1,33 +1,33 @@
-import React, { Fragment } from "react";
-import ReactDOM from "react-dom";
+import React, { Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect
-} from "react-router-dom";
-import "./index.css";
+} from 'react-router-dom';
+import './index.css';
 
-import App from "./components/App";
-import Navbar from "./components/Navbar";
-import withSession from "./components/withSession";
-import Signin from "./components/Auth/Signin";
-import Signup from "./components/Auth/Signup";
-import Search from "./components/Recipe/Search";
-import AddRecipe from "./components/Recipe/AddRecipe";
-import RecipePage from "./components/Recipe/RecipePage";
-import Profile from "./components/Profile/Profile";
+import App from './components/App';
+import Navbar from './components/Navbar';
+import withSession from './components/withSession';
+import Signin from './components/Auth/Signin';
+import Signup from './components/Auth/Signup';
+import Search from './components/Recipe/Search';
+import AddRecipe from './components/Recipe/AddRecipe';
+import RecipePage from './components/Recipe/RecipePage';
+import Profile from './components/Profile/Profile';
 
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
-  uri: "http://localhost:4444/graphql",
+  uri: 'http://localhost:4444/graphql',
   fetchOptions: {
-    credentials: "include"
+    credentials: 'include'
   },
   request: operation => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     operation.setContext({
       headers: {
         authorization: token
@@ -36,11 +36,12 @@ const client = new ApolloClient({
   },
   onError: ({ networkError }) => {
     if (networkError) {
-      localStorage.setItem("token", "");
+      localStorage.setItem('token', '');
     }
   }
 });
 
+// Switch will hold all our routes...
 const Root = ({ refetch, session }) => (
   <Router>
     <Fragment>
@@ -68,5 +69,5 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <RootWithSession />
   </ApolloProvider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

@@ -42,14 +42,14 @@ exports.resolvers = {
         password
       }).save();
       return { token: createToken(newUser, process.env.SECRET, '1hr') };
-    },
-
-    signinUser: async (root, { username, password }, { User }) => {
-      const user = await User.findOne({ username });
-      if (!user) {
-        throw new Error('User not found');
-      }
     }
+
+    // signinUser: async (root, { username, password }, { User }) => {
+    //   const user = await User.findOne({ username });
+    //   if (!user) {
+    //     throw new Error('User not found');
+    //   }
+    // }
   }
 };
 
