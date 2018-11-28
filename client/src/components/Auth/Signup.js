@@ -14,6 +14,7 @@ const initialState = {
 };
 
 class Signup extends React.Component {
+  //we can use object spread,,, es6 feature...
   state = { ...initialState };
 
   clearState = () => {
@@ -32,7 +33,7 @@ class Signup extends React.Component {
   handleSubmit = (event, signupUser) => {
     event.preventDefault();
     signupUser().then(async ({ data }) => {
-      // console.log(data);
+      console.log(data);
       localStorage.setItem('token', data.signupUser.token);
       await this.props.refetch();
       this.clearState();
@@ -40,6 +41,7 @@ class Signup extends React.Component {
     });
   };
 
+  //if return value of validate form is true then... we make button disabled...
   validateForm = () => {
     const { username, email, password, passwordConfirmation } = this.state;
     const isInvalid =
