@@ -44,9 +44,9 @@ const RecipeSchema = new Schema({
   }
 });
 
-RecipeSchema.index({
-  '$**': 'text'
-});
+// RecipeSchema.index({
+//   '$**': 'text'
+// });
 
 //We want to export the schema...
 module.exports = mongoose.model('Recipe', RecipeSchema);

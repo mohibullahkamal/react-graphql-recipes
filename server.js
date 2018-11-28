@@ -63,15 +63,15 @@ app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 // Connect schemas with GraphQL
 app.use(
   '/graphql',
-  //bodyParser.json(),
-  graphqlExpress(({ currentUser }) => ({
+  bodyParser.json(),
+  graphqlExpress({
     schema,
     context: {
       Recipe,
       User
       //currentUser
     }
-  }))
+  })
 );
 
 // if (process.env.NODE_ENV === 'production') {
