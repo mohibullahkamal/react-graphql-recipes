@@ -63,6 +63,7 @@ const Root = ({ refetch, session }) => (
   </Router>
 );
 
+//we use with seesion to wrap our components...
 const RootWithSession = withSession(Root);
 
 ReactDOM.render(
