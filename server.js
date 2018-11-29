@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose'); //connect our app to mlab using mongoose, also building our schema
 const bodyParser = require('body-parser'); //need for json request and responses
-// const path = require('path');
+const path = require('path');
 const cors = require('cors'); //cors is an express package that allows us to make cross domain requests... from React App to our Backend...
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: 'variables.env' }); //this will allow us to create different variables for those entries that we provided in our .env file...
 
 //import both recipe and user JS files...
@@ -43,7 +43,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// app.use(cors('*'));
+app.use(cors('*'));
 
 //Set up JWT authentication middleware
 app.use(async (req, res, next) => {
@@ -76,13 +76,13 @@ app.use(
   })
 );
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('client/build'));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
 
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//   });
-// }
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const PORT = process.env.PORT || 4444;
 

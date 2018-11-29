@@ -28,7 +28,8 @@ type User {
 
 type Query {
   getAllRecipes: [Recipe]
-
+  getRecipe(_id: ID!): Recipe
+  searchRecipes(searchTerm: String): [Recipe]
   getCurrentUser: User
 }
 
@@ -38,18 +39,16 @@ type Token {
 
 type Mutation {
   addRecipe(name: String!, description: String!, category: String!, instructions: String!, username: String): Recipe
-  
   signinUser(username: String!, password: String!): Token
-  
   signupUser(username: String!, email: String!, password: String!): Token
 }
 
 `;
 
-//   getRecipe(_id: ID!): Recipe
-//   searchRecipes(searchTerm: String): [Recipe]
+//   getCurrentUser: User
 //   getUserRecipes(username: String!): [Recipe]
 
 // deleteUserRecipe(_id: ID): Recipe
+
 // likeRecipe(_id: ID!, username: String!): Recipe
 // unlikeRecipe(_id: ID!, username: String!): Recipe
