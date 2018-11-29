@@ -1,22 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Query, Mutation } from "react-apollo";
+import { Query, Mutation } from 'react-apollo';
 import {
   GET_USER_RECIPES,
   DELETE_USER_RECIPE,
   GET_ALL_RECIPES,
   GET_CURRENT_USER
-} from "../../queries";
-import Spinner from "../Spinner";
+} from '../../queries';
+import Spinner from '../Spinner';
 
 const handleDelete = deleteUserRecipe => {
   const confirmDelete = window.confirm(
-    "Are you sure you want to delete this recipe?"
+    'Are you sure you want to delete this recipe?'
   );
   if (confirmDelete) {
     deleteUserRecipe().then(({ data }) => {
-      // console.log(data);
+      console.log(data);
     });
   }
 };
@@ -26,7 +26,7 @@ const UserRecipes = ({ username }) => (
     {({ data, loading, error }) => {
       if (loading) return <Spinner />;
       if (error) return <div>Error</div>;
-      // console.log(data);
+      console.log(data);
       return (
         <ul>
           <h3>Your Recipes</h3>
@@ -40,7 +40,7 @@ const UserRecipes = ({ username }) => (
               <Link to={`/recipes/${recipe._id}`}>
                 <p>{recipe.name}</p>
               </Link>
-              <p style={{ marginBottom: "0" }}>Likes: {recipe.likes}</p>
+              <p style={{ marginBottom: '0' }}>Likes: {recipe.likes}</p>
               <Mutation
                 mutation={DELETE_USER_RECIPE}
                 variables={{ _id: recipe._id }}
@@ -70,7 +70,7 @@ const UserRecipes = ({ username }) => (
                     className="delete-button"
                     onClick={() => handleDelete(deleteUserRecipe)}
                   >
-                    {attrs.loading ? "deleting..." : "X"}
+                    {attrs.loading ? 'deleting...' : 'X'}
                   </p>
                 )}
               </Mutation>
