@@ -1,13 +1,12 @@
-import { gql } from "apollo-boost";
+import { gql } from 'apollo-boost';
 
-import { recipeFragments } from "./fragments";
+import { recipeFragments } from './fragments';
 
 /* Recipes Queries */
 export const GET_ALL_RECIPES = gql`
   query {
     getAllRecipes {
       _id
-      imageUrl
       name
       category
     }

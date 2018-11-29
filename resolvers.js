@@ -14,6 +14,68 @@ exports.resolvers = {
     }
   },
 
+  likeRecipe: async (root, { _id, username }, { Recipe, User }) => {
+    const recipe = await Recipe.findOneAndUpdate(
+      { _id },
+      { $inc: { likes: 1 } }
+    );
+    const user = await User.findOneAndUpdate(
+      { username },
+      { $addToSet: { favorites: _id } }
+    );
+    return recipe;
+  },
+  unlikeRecipe: async (root, { _id, username }, { Recipe, User }) => {
+    const recipe = await Recipe.findOneAndUpdate(
+      { _id },
+      { $inc: { likes: -1 } }
+    );
+    const user = await User.findOneAndUpdate(
+      { username },
+      { $pull: { favorites: _id } }
+    );
+    return recipe;
+  },
+
+  deleteUserRecipe: async (root, { _id }, { Recipe }) => {
+    const recipe = await Recipe.findOneAndRemove({ _id });
+    return recipe;
+  },
+
+  getRecipe: async (root, { _id }, { Recipe }) => {
+    const recipe = await Recipe.findOne({ _id });
+    return recipe;
+  },
+
+  searchRecipes: async (root, { searchTerm }, { Recipe }) => {
+    if (searchTerm) {
+      const searchResults = await Recipe.find(
+        {
+          $text: { $search: searchTerm }
+        },
+        {
+          score: { $meta: 'textScore' }
+        }
+      ).sort({
+        score: { $meta: 'textScore' }
+      });
+      return searchResults;
+    } else {
+      const recipes = await Recipe.find().sort({
+        likes: 'desc',
+        createdDate: 'desc'
+      });
+      return recipes;
+    }
+  },
+
+  getUserRecipes: async (root, { username }, { Recipe }) => {
+    const userRecipes = await Recipe.find({ username }).sort({
+      createdDate: 'desc'
+    });
+    return userRecipes;
+  },
+
   getCurrentUser: async (root, args, { currentUser, User }) => {
     if (!currentUser) {
       return null;
@@ -73,65 +135,3 @@ exports.resolvers = {
     return { token: createToken(newUser, process.env.SECRET, '1hr') };
   }
 };
-
-// likeRecipe: async (root, { _id, username }, { Recipe, User }) => {
-//   const recipe = await Recipe.findOneAndUpdate(
-//     { _id },
-//     { $inc: { likes: 1 } }
-//   );
-//   const user = await User.findOneAndUpdate(
-//     { username },
-//     { $addToSet: { favorites: _id } }
-//   );
-//   return recipe;
-// },
-// unlikeRecipe: async (root, { _id, username }, { Recipe, User }) => {
-//   const recipe = await Recipe.findOneAndUpdate(
-//     { _id },
-//     { $inc: { likes: -1 } }
-//   );
-//   const user = await User.findOneAndUpdate(
-//     { username },
-//     { $pull: { favorites: _id } }
-//   );
-//   return recipe;
-// },
-// deleteUserRecipe: async (root, { _id }, { Recipe }) => {
-//   const recipe = await Recipe.findOneAndRemove({ _id });
-//   return recipe;
-// },
-
-//   const allRecipes = await Recipe.find().sort({ createdDate: 'desc' });
-//   return allRecipes;
-// },
-// getRecipe: async (root, { _id }, { Recipe }) => {
-//   const recipe = await Recipe.findOne({ _id });
-//   return recipe;
-// },
-// searchRecipes: async (root, { searchTerm }, { Recipe }) => {
-//   if (searchTerm) {
-//     const searchResults = await Recipe.find(
-//       {
-//         $text: { $search: searchTerm }
-//       },
-//       {
-//         score: { $meta: 'textScore' }
-//       }
-//     ).sort({
-//       score: { $meta: 'textScore' }
-//     });
-//     return searchResults;
-//   } else {
-//     const recipes = await Recipe.find().sort({
-//       likes: 'desc',
-//       createdDate: 'desc'
-//     });
-//     return recipes;
-//   }
-// },
-// getUserRecipes: async (root, { username }, { Recipe }) => {
-//   const userRecipes = await Recipe.find({ username }).sort({
-//     createdDate: 'desc'
-//   });
-//   return userRecipes;
-// },
