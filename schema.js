@@ -48,13 +48,7 @@ type Mutation {
 
 //   getRecipe(_id: ID!): Recipe
 //   searchRecipes(searchTerm: String): [Recipe]
-
-//   getCurrentUser: User
 //   getUserRecipes(username: String!): [Recipe]
-
-// type Token {
-//   token: String!
-// }
 
 // deleteUserRecipe(_id: ID): Recipe
 // likeRecipe(_id: ID!, username: String!): Recipe

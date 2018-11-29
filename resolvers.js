@@ -25,6 +25,7 @@ exports.resolvers = {
     );
     return recipe;
   },
+
   unlikeRecipe: async (root, { _id, username }, { Recipe, User }) => {
     const recipe = await Recipe.findOneAndUpdate(
       { _id },

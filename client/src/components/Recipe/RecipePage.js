@@ -1,10 +1,10 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { Query } from "react-apollo";
-import { GET_RECIPE } from "../../queries";
-import LikeRecipe from "./LikeRecipe";
-import Spinner from "../Spinner";
+import { Query } from 'react-apollo';
+import { GET_RECIPE } from '../../queries';
+import LikeRecipe from './LikeRecipe';
+import Spinner from '../Spinner';
 
 const RecipePage = ({ match }) => {
   const { _id } = match.params;
@@ -13,7 +13,7 @@ const RecipePage = ({ match }) => {
       {({ data, loading, error }) => {
         if (loading) return <Spinner />;
         if (error) return <div>Error</div>;
-        // console.log(data);
+        console.log(data);
         return (
           <div>
             <div
@@ -37,7 +37,7 @@ const RecipePage = ({ match }) => {
                   Created by <strong>{data.getRecipe.username}</strong>
                 </p>
                 <p>
-                  {data.getRecipe.likes}{" "}
+                  {data.getRecipe.likes}{' '}
                   <span role="img" aria-label="heart">
                     ❤️
                   </span>
