@@ -8,12 +8,10 @@
 - React and GraphQL (Apollo Boost) in Frontend, 
 - Express, and MongoDB in the Backend.
 
-
 ---
 
-
  *`Full Disclosure: I followed the Awesome Udemy course by Reed Barger (Full-Stack React with GraphQL and Apollo Boost
-). He is a great teacher and I got exposure to Real World Full Stack Web App Development.`*
+). He is a great teacher. This Project gained me valuable experience in Real World Full Stack Web App Development.`*
 
 
 
