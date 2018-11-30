@@ -4,7 +4,7 @@
   "description": "A starter for React-Apollo-GraphQL projects",
   "main": "server.js",
   "engines": {
-    "node": "8.9.4"
+    "node": "8.12.0"
   },
   "scripts": {
     "start": "node server.js",
