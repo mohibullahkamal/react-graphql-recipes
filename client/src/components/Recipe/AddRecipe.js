@@ -1,19 +1,19 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import CKEditor from 'react-ckeditor-component';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import CKEditor from "react-ckeditor-component";
 
-import { Mutation } from 'react-apollo';
-import { ADD_RECIPE, GET_ALL_RECIPES, GET_USER_RECIPES } from '../../queries';
-import Error from '../Error';
-import withAuth from '../withAuth';
+import { Mutation } from "react-apollo";
+import { ADD_RECIPE, GET_ALL_RECIPES, GET_USER_RECIPES } from "../../queries";
+import Error from "../Error";
+import withAuth from "../withAuth";
 
 const initialState = {
-  name: '',
-  imageUrl: '',
-  instructions: '',
-  category: 'Breakfast',
-  description: '',
-  username: ''
+  name: "",
+  imageUrl: "",
+  instructions: "",
+  category: "Breakfast",
+  description: "",
+  username: ""
 };
 
 class AddRecipe extends React.Component {
@@ -42,9 +42,9 @@ class AddRecipe extends React.Component {
   handleSubmit = (event, addRecipe) => {
     event.preventDefault();
     addRecipe().then(({ data }) => {
-      console.log(data);
+      // console.log(data);
       this.clearState();
-      this.props.history.push('/');
+      this.props.history.push("/");
     });
   };
 
@@ -141,12 +141,12 @@ class AddRecipe extends React.Component {
                   content={instructions}
                   events={{ change: this.handleEditorChange }}
                 />
-                <textarea
+                {/* <textarea
                   name="instructions"
                   placeholder="Add instructions"
                   onChange={this.handleChange}
                   value={instructions}
-                />
+                /> */}
                 <button
                   disabled={loading || this.validateForm()}
                   type="submit"

@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { Mutation } from 'react-apollo';
-import { LIKE_RECIPE, UNLIKE_RECIPE, GET_RECIPE } from '../../queries';
-import withSession from '../withSession';
+import { Mutation } from "react-apollo";
+import { LIKE_RECIPE, UNLIKE_RECIPE, GET_RECIPE } from "../../queries";
+import withSession from "../withSession";
 
 class LikeRecipe extends React.Component {
   state = {
     liked: false,
-    username: ''
+    username: ""
   };
 
   componentDidMount() {
@@ -35,12 +35,12 @@ class LikeRecipe extends React.Component {
   handleLike = (likeRecipe, unlikeRecipe) => {
     if (this.state.liked) {
       likeRecipe().then(async ({ data }) => {
-        console.log(data);
+        // console.log(data);
         await this.props.refetch();
       });
     } else {
       unlikeRecipe().then(async ({ data }) => {
-        console.log(data);
+        // console.log(data);
         await this.props.refetch();
       });
     }
@@ -99,7 +99,7 @@ class LikeRecipe extends React.Component {
                   className="like-button"
                   onClick={() => this.handleClick(likeRecipe, unlikeRecipe)}
                 >
-                  {liked ? 'Unlike' : 'Like'}
+                  {liked ? "Unlike" : "Like"}
                 </button>
               )
             }

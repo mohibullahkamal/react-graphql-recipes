@@ -1,14 +1,9 @@
-//************************ */
-//************************ */
-// Note Below are all GRAPHQL model...
-//************************ */
-//************************ */
-
 exports.typeDefs = `
 
 type Recipe {
-  _id: ID 
+  _id: ID
   name: String!
+  imageUrl: String!
   category: String!
   description: String!
   instructions: String!
@@ -18,7 +13,7 @@ type Recipe {
 }
 
 type User {
-  _id: ID 
+  _id: ID
   username: String! @unique
   password: String!
   email: String!
@@ -30,6 +25,7 @@ type Query {
   getAllRecipes: [Recipe]
   getRecipe(_id: ID!): Recipe
   searchRecipes(searchTerm: String): [Recipe]
+
   getCurrentUser: User
   getUserRecipes(username: String!): [Recipe]
 }
@@ -39,7 +35,7 @@ type Token {
 }
 
 type Mutation {
-  addRecipe(name: String!, description: String!, category: String!, instructions: String!, username: String): Recipe
+  addRecipe(name: String!, imageUrl: String!, description: String!, category: String!, instructions: String!, username: String): Recipe
   deleteUserRecipe(_id: ID): Recipe
   likeRecipe(_id: ID!, username: String!): Recipe
   unlikeRecipe(_id: ID!, username: String!): Recipe

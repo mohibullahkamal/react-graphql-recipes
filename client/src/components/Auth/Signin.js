@@ -1,13 +1,13 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
-import { Mutation } from 'react-apollo';
-import Error from '../Error';
-import { SIGNIN_USER } from '../../queries';
+import { Mutation } from "react-apollo";
+import Error from "../Error";
+import { SIGNIN_USER } from "../../queries";
 
 const initialState = {
-  username: '',
-  password: ''
+  username: "",
+  password: ""
 };
 
 class Signin extends React.Component {
@@ -25,13 +25,11 @@ class Signin extends React.Component {
   handleSubmit = (event, signinUser) => {
     event.preventDefault();
     signinUser().then(async ({ data }) => {
-      console.log(data);
-
-      //lets use data to authenticate user... we can access token by "data.signinUser.token"
-      localStorage.setItem('token', data.signinUser.token);
+      // console.log(data);
+      localStorage.setItem("token", data.signinUser.token);
       await this.props.refetch();
       this.clearState();
-      this.props.history.push('/');
+      this.props.history.push("/");
     });
   };
 
