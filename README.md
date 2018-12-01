@@ -25,7 +25,6 @@
 # Food Recipe Web-App
 ## [Click For DEMO](https://react-graphql-apollo-recipes.herokuapp.com/)
 
----
 
 ## Main Features:
 - Full Authentication (sign up, sign in, sign out), 
