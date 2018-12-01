@@ -22,16 +22,43 @@
   <img align="right" width="450" alt="screen shot 2018-11-30 at 15 00 18" src="https://user-images.githubusercontent.com/9574723/49294395-1c8b1380-f4b3-11e8-9bd2-3a8d1d7f451b.png">
 </a>
 
+# Food Recipe Web-App
+## [Click For DEMO](https://react-graphql-apollo-recipes.herokuapp.com/)
 
+---
 
-### [Click to View](https://react-graphql-apollo-recipes.herokuapp.com/)
-
-
-## Food Recipe Web-App:
+## Main Features:
 - Full Authentication (sign up, sign in, sign out), 
 - able to create, browse, search for, save, and delete recipes,
 - React and GraphQL (Apollo Boost) in Frontend, 
 - Express, and MongoDB in the Backend.
+
+---
+
+### What I learned from this project:
+1. Building a backend with Node.js using the Express framework, then integrate our backend with GraphQL,
+
+2. learn essential topics within GraphQL such as queries, mutations, schemas and resolvers,
+
+3. the GraphQL syntax and work extensively with GraphiQL to test queries and mutations, 
+
+4. build a React application and then connect it to the GraphQL-Express backend using Apollo Boost, and ApolloClient,
+
+5. learn latest features of Apollo Boost and React Apollo, including ApolloClient, ApolloProvider/ApolloConsumer, as well as Query and Mutation components,
+
+6. learn how to refetch queries, use optimistic UI, nest query and mutation components, use fragments,
+
+7. Use React Router (version 4) to provide routing for the application, learn how to make protected routes, 
+
+8. use essential lifecycle methods, reinforce proper state management practices, 
+
+9. use helpful ES6 features such as the object and array spread operators and object and array destructuring,
+
+10. learn additional React component libraries (i.e. react-pose, react-spinners) to style and animate the application,
+
+11. and make application responsive with CSS grid,
+
+12. create a postbuild script and deploying to Heroku, using the Heroku CLI.
 
 ---
 
