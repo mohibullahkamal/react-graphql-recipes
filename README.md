@@ -35,7 +35,7 @@
 ---
 
 ### What I learned from this project:
-1. Building a backend with Node.js using the Express framework, then integrate our backend with GraphQL,
+1. Building a backend with NodeJs using the Express framework, then integrate our backend with GraphQL,
 
 2. learn essential topics within GraphQL such as queries, mutations, schemas and resolvers,
 
